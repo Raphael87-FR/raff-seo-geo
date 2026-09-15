@@ -19,7 +19,7 @@ Here, GEO means potential visibility in AI-assisted search experiences, not a gu
 
 Read the [audit checklist](references/audit.md) when auditing, planning, or modifying a site. Prioritize obstacles to accessing important pages, then content quality and clarity, then enhancements that genuinely apply. Adapt checks to the site's scale and technology; the checklist is not a mandate to add every feature.
 
-If the user asks only for an audit or diagnosis, deliver findings and suggestions without changing the site. If they request changes, preserve existing work, explain important product choices, and run relevant project checks. Do not equate local validation with deployment, indexing, or appearance in an AI answer.
+If the user asks only for an audit or diagnosis, create the Markdown report described below without changing the site's code, content, or external settings. If they request site changes, preserve existing work, explain important product choices, and run relevant project checks. Do not equate local validation with deployment, indexing, or appearance in an AI answer.
 
 ## Important limits
 
@@ -31,4 +31,6 @@ If the user asks only for an audit or diagnosis, deliver findings and suggestion
 
 ## Reporting
 
-Present key findings in order of likely impact, with evidence and sources, applied or proposed corrections, checks performed, and what remains to verify on the deployed site. For measurement, favor first-party Search Console and Bing Webmaster Tools data when the user has access; name the metric and limits of each AI report. Do not treat a `site:` query as exhaustive proof of indexing.
+For every audit or diagnosis, save a Markdown report in the audited project's writable workspace unless the user requests a different format or no file. Use the user's output path when provided; otherwise, choose a folder outside publicly served content (use `reports/` at the project root only if it is not published) and a safe, dated, site-specific filename. Never overwrite an existing report; choose a distinct filename instead. Do not include credentials or unrelated private data, and do not commit or publish the report without an explicit request. If there is no writable workspace or safe location, ask for a destination when useful, then provide the complete Markdown in the response and clearly state whether a file was saved.
+
+The report must identify scope, audit date, important pages and engines, and whether evidence came from code, a live URL, or first-party tools. Present findings in order of likely impact, with classification, affected page, evidence, primary source, recommended or applied correction, and verification limits. Include checks performed, unavailable data, measurement options, and what remains to verify on the deployed site; say explicitly when no finding was verified. For measurement, favor first-party Search Console and Bing Webmaster Tools data when the user has access; name the metric and limits of each AI report. Do not treat a `site:` query as exhaustive proof of indexing. Link to the saved report in the response and summarize the most important findings.

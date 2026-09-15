@@ -15,6 +15,8 @@ A popular tactic or third-party tool can suggest a hypothesis, but it is not eno
 
 - [SKILL.md](skills/raff-seo-geo/SKILL.md): activation, shared method, and essential limits. Keep it concise and in English.
 - [Audit checklist](skills/raff-seo-geo/references/audit.md): detailed checks, sources, and options specific to an engine or site type.
+- [Reporting guide](skills/raff-seo-geo/references/reporting.md): prior-audit reconciliation, finding IDs, and verification states.
+- [Report helper](skills/raff-seo-geo/scripts/save-report.mjs): exclusive Markdown file creation; keep it dependency-free and test collision behavior.
 - [README.md](README.md): overview, installation through the existing `npx skills` CLI, and review scenarios. Do not create a custom installer without a demonstrated need.
 
 Add a script or dependency only if repeated behavior calls for deterministic execution; a new audit rule normally does not. If you change the license, keep [LICENSE](LICENSE) consistent with the [copy installed with the skill](skills/raff-seo-geo/LICENSE).
@@ -28,6 +30,8 @@ npx skills add . --list
 ```
 
 Also check `SKILL.md` against the [Agent Skills specification](https://agentskills.io/specification), check links and the freshness of affected sources, and try a relevant scenario from the [README's “Checks before publication” section](README.md#checks-before-publication) in a safe test project. If you test installation, use Project scope in a temporary directory, not your global installations.
+
+If you change the report helper, run `node --test tests/save-report.test.mjs` and verify that repeat runs do not alter an earlier report.
 
 In your proposal, state which checks you actually ran, their results, and their limits. A local installation does not prove agent behavior on every site, deployment, indexing, or an AI citation. Never include secrets or private data in examples or reports.
 

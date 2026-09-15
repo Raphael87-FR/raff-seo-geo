@@ -1,0 +1,6 @@
+# Atlas
+
+Index utilisé par le lecteur de documentation interne de l'équipe.
+
+- [Guide](https://atlas-followup.test/help/)
+- [Téléchargement](https://atlas-followup.test/download/)

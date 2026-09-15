@@ -1,8 +1,10 @@
 # Raff-SEO-GEO
 
-An agent skill for auditing and improving website visibility in traditional search and AI-assisted search experiences. It favors official, verifiable guidance and makes no promises about rankings, citations, or numeric gains. The skill instructions are in [skills/raff-seo-geo/SKILL.md](skills/raff-seo-geo/SKILL.md).
+An agent skill for auditing and improving website visibility in traditional search and AI-assisted search experiences (SEO + GEO, not paid search/SEA). It favors official, verifiable guidance and makes no promises about rankings, citations, or numeric gains. The skill instructions are in [skills/raff-seo-geo/SKILL.md](skills/raff-seo-geo/SKILL.md).
 
-It does not add `llms.txt`, `FAQPage`, or “AI-specific” markup by default: [Google does not use `llms.txt` for Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), and [Google retired the FAQ rich result in May 2026](https://developers.google.com/search/updates#faq-deprecation). Structured data remains an option for a currently documented use and accurate page information; it does not promise a ranking or citation.
+It helps decide what to preserve, improve, measure, simplify, or remove. The [evidence and decisions guide](skills/raff-seo-geo/references/decisions.md) distinguishes unsupported tactics from context-dependent uses: for example, lack of a Google Search benefit does not make a useful FAQ or another service's documentation index disposable.
+
+The audit works with the repository, accessible public pages, and previous reports. Search Console, Bing Webmaster Tools, analytics, and supplied exports are optional enrichment. Missing accounts do not block the report or trigger login/OAuth requests; conclusions that require unavailable data remain unverified.
 
 ## Installation
 
@@ -31,11 +33,20 @@ npx skills add . --list
 
 For each audit or diagnosis, the skill asks the agent to save a Markdown report in the audited project's workspace. Its preferred location is `.raff-seo-geo/reports/` at the project root, but only after confirming that the folder is outside published content; you can request another path or no file. The [no-overwrite helper](skills/raff-seo-geo/scripts/save-report.mjs) uses Node.js without third-party dependencies to create `raff-seo-geo-<site>-YYYY-MM-DD.md`, adding `-2`, `-3`, and so on for same-day repeats. It refuses to replace a user-specified exact filename that already exists. The helper does not decide whether a path is private or whether a recommendation was implemented. Existing reports must not be committed or published automatically.
 
-On a repeat audit, the skill must consult relevant earlier reports for the same site, compare their findings with current evidence, and separate open follow-ups from genuinely new recommendations. Each finding keeps a stable ID. The report records both the observed implementation layer (local, live, or unknown) and whether the original problem persists; a local fix is not proof of deployment, indexing, or AI visibility. A single action queue sorts all open follow-ups and new findings by **P1 (blocking), P2 (important), P3 (conditional)**, with a reason for each priority. These are site-specific work priorities, not a GEO score or promised gain; resolved and unsupported tactics do not enter the queue. A separate **Verified strengths** section lists relevant good practices observed in the current audit, with page, evidence layer, and limits; it does not turn a technical pass into an indexing or AI-visibility claim. The [reporting guide](skills/raff-seo-geo/references/reporting.md) defines this follow-up and prioritization. An audit-only request may create a report but does not authorize changes to site code, content, or external settings. If no safe, writable location or exclusive-create mechanism is available, the agent should provide the complete Markdown in its response and say that no file was saved.
+Reports use a [versioned Markdown template](skills/raff-seo-geo/assets/report-template.md) and the [reporting guide](skills/raff-seo-geo/references/reporting.md):
+
+- **Complete action queue:** every detected, justified active action, sorted **P1 (blocking), P2 (important), P3 (conditional)**, with evidence and reasons. There is no top-three or other numerical cap. These are work priorities, not a GEO score or promised gain.
+- **Verified strengths:** practices positively observed in the current audit and worth preserving, with evidence layers and limits.
+- **Decision history:** stable finding IDs, local/production distinctions, regressions, corrections of earlier advice, and the owner's accepted, deferred, or declined decisions. Inactive decisions remain visible outside the active queue.
+- **Finding details and opportunities:** the observation, applicable source claim, reasoning, goal contribution, confidence, effort/dependencies, and a verification criterion.
+- **Keep, simplify, or remove:** assess actual uses, costs, and loss risks; withdrawing an old recommendation does not automatically justify deleting its implementation. Low traffic or missing statistics alone do not justify deleting a page.
+- **Measurement:** available baselines, comparable periods, implementation checks, and outcome limits. Missing private data does not prevent a complete audit at the stated scope.
+
+A local fix is not proof of deployment, indexing, or AI visibility; supplied captures are not fresh live inspections. A healthy site may need no changes. An audit-only request may create a report but does not authorize changes to site code, content, or external settings. If no safe, writable location or exclusive-create mechanism is available, the agent provides the complete Markdown in its response and says that no file was saved.
 
 ## Keeping guidance reliable
 
-SEO rules and AI features change. Before applying a recommendation, the skill calls for checking current provider documentation and separating verified findings, hypotheses, and observed outcomes. The [audit checklist](skills/raff-seo-geo/references/audit.md) links to relevant official sources.
+SEO rules and AI features change. Before applying a recommendation, the skill calls for checking current provider documentation and recording the precise supported claim, applicability, and consultation date. It distinguishes contradicted claims, unestablished benefits, and inapplicable tactics, and permits bounded, measurable hypotheses with a credible rationale. The [audit checklist](skills/raff-seo-geo/references/audit.md) covers access, content, credibility, opportunities, conditional investigations, and measurement with relevant primary sources.
 
 The [MIT license](LICENSE) covers the repository; a copy is also included in the skill folder so installations retain the license notice.
 
@@ -44,7 +55,9 @@ To report a vulnerability, see [SECURITY.md](SECURITY.md).
 
 ## Checks before publication
 
-Check the format against the [Agent Skills specification](https://agentskills.io/specification), then verify local discovery with `npx skills add . --list`. To review the skill's decisions, try at least these requests on a safe test site and inspect the answers and any changes:
+Check the format against the [Agent Skills specification](https://agentskills.io/specification), then verify local discovery with `npx skills add . --list`. Use the [behavioral evaluation fixtures and rubric](tests/behavior/README.md) to test report history, completeness beyond three actions, unsupported advice, removal judgment, opportunities, and audits without private accounts. These tests inspect decisions and actual artifacts, not exact generated wording.
+
+Also try applicable integration scenarios on a safe test site:
 
 - A page is indexed, but Google's **Search generative AI** control is set to “Exclude”: the skill should identify the exclusion without changing it or promising AI visibility.
 - A GEO audit with access to Google and Bing reports: it should distinguish Google link impressions, Bing citations, missing data, and lack of causal evidence.
@@ -57,4 +70,4 @@ Check the format against the [Agent Skills specification](https://agentskills.io
 
 The report helper has dependency-free tests. Run `node --test tests/save-report.test.mjs` from the repository root to check repeat-run naming and refusal to replace an exact output path.
 
-These scenarios are review criteria, not a guarantee of agent behavior without actual testing. A local installation can verify the package; a GitHub installation requires the repository to be accessible.
+The [behavioral evaluation record](tests/behavior/RESULTS.md) states what has actually been exercised and its limits. Finite fixtures and review criteria do not guarantee agent behavior on every site. A local installation can verify the package; a GitHub installation requires the repository to be accessible.

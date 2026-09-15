@@ -17,10 +17,11 @@ on a third-party site without authorization.
 
 ## Scope and versions
 
-Raff-SEO-GEO is currently an instruction-only skill, with no hosted
-service or executable script. This policy covers the skill, its
-references, this repository's installation instructions, and any
-code added here later.
+Raff-SEO-GEO contains agent instructions, references, a report template,
+and a local Node.js helper that creates Markdown reports without
+overwriting existing files. It has no hosted service. This policy covers
+those resources, this repository's installation instructions, and code
+added here later.
 
 There is no fixed supported-version matrix. Identify the affected
 commit or the date of your copy; affected versions will be assessed

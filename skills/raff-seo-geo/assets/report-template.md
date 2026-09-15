@@ -9,6 +9,8 @@ audited_revision: "<audited project revision and local-change state, or unknown>
 
 # SEO/GEO audit — <site>
 
+Use this detailed layout when findings or history require it; the compact template has the same metadata and requirements. Replace all placeholders and share evidence/source references instead of repeating them.
+
 ## Scope and summary
 
 - Goal and audience: <useful outcome, important pages, languages, engines>
@@ -17,6 +19,12 @@ audited_revision: "<audited project revision and local-change state, or unknown>
 - History: <reports actually consulted, or exact locations checked>
 - Limits: <unavailable data/access; assumptions; no account connection required>
 - Conclusion: <main decision and verification limits; explicitly state if no finding was verified>
+
+### Visitor needs and page coverage
+
+| Need / intent | Evidence and confidence | Language / market | Existing page / section | Coverage and gap | Decision / action ID |
+| --- | --- | --- | --- | --- | --- |
+| <need> | <observed question, evidence ID, or hypothesis> | <context> | <page> | <met/partial/missing/unknown; specific gap> | <preserve/improve/investigate/create; RSG ID> |
 
 ## Complete action queue
 
@@ -81,5 +89,6 @@ If no removal is justified, say so. Withdrawing an old recommendation does not a
 
 - Checks actually performed: <commands/tools, results, failures; no inferred pass>
 - Evidence provenance: <files/URLs/exports/captures and collection dates; distinguish supplied material from live inspection>
+- Preserved observations: <evidence ID, artifact path + locator, layer/date/context and completeness; link earlier/current snapshots for comparisons>
 - Primary sources: <URL, consultation date, exact supported claim, applicable provider/feature; explicitly mark sources not freshly verified>
 - Remaining coverage and verification limits: <what could not be checked; what requires deployment or unavailable data>

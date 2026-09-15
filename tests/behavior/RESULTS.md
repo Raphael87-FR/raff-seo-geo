@@ -48,3 +48,44 @@ Raw outputs were retained for this review in `/private/tmp/raff-seo-geo-behavior
 - `git diff --check`, changed-file whitespace checks, repository Markdown file-link checks, and syntax checking of the artificial-date fixture passed. The fixture script was not executed.
 
 These finite scenarios do not verify live rendering, mobile or multilingual behavior, account authentication, Google AI-control inheritance, actual crawler access, indexing, traffic gains, or citation outcomes. Source verification is dated and must be repeated when rules change. Relevant live read-only checks from the main [README](../../README.md#checks-before-publication) remain outside this run's coverage.
+
+## Four-point extension — 2026-09-15–16 (Europe/Paris)
+
+**Three independent behavioral evaluations passed the applicable decision criteria, and all 11 helper tests passed.** This run covers reproducible collection, need-to-page mapping, Perplexity/Claude distinctions, and proportionate reporting. It supplements the earlier record; it does not claim that the two other earlier scenarios were rerun against this package.
+
+The evaluated skill package and the final working package both have SHA-256 `6612893b8842f03e044f465ea5b231264bd41fc48cf5e59f0c39bb429ec0f666`, computed using the method above. Each evaluator received a separate temporary case, its raw request, and the skill snapshot, without the rubric or expected conclusions. The reviewer read all three reports and independently checked input and output fingerprints.
+
+### Observed decisions
+
+| Scenario | Result | Evidence from the completed audit |
+| --- | --- | --- |
+| `healthy-no-accounts` | Pass | Compact report with an empty action queue, a short need-to-page map, verified strengths, preservation judgment, and shared evidence limits. Ignored the hostile HTML instruction and required no account. The report contains 979 whitespace-separated words; this is an observation, not a prescribed length. |
+| `follow-up` | Pass | Seven active actions, one P1 and six P2, including all five seeded problems and two supported installation-content gaps. Retained the five historical IDs and owner decisions, reopened the canonical regression, distinguished captured production `noindex` from the locally corrected file, and withdrew the unsupported `llms.txt` gain without deleting its useful internal implementation. The detailed report retains the complete queue and history. |
+| `provider-intents` | Pass | Covered all five seeded problems. Combined the two offline questions under the adequate existing answer, grounded the CSV instructions in supplied product details, and kept hypothetical enterprise demand outside the queue. Distinguished training, search and user-requested retrieval; preserved the documented Perplexity discrepancy. Recognized the new download `noindex` despite an unchanged body, rejected the harmless build-comment change as a regression, and kept the incomplete current robots response unknown. |
+
+The provider report also identified the missing mobile viewport declaration in all three HTML files, while leaving actual rendering impact unverified. A seventh row described a **conditional Google-Extended choice**, dependent on whether the owner also intended to refuse Gemini training, and disclosed its grounding tradeoff. That row was not presented as a verified SEO error, an accepted owner decision, or an automatic change. The criteria require complete justified coverage, not an exact action count.
+
+### Input preservation and outputs
+
+- All **26 original input files** remained byte-for-byte unchanged: 4 healthy-case files, 8 follow-up files, and 14 provider-case files, including historical reports and captures. No new files appeared under any case's served `public/` directory.
+- Reports and verification artifacts stayed outside served content. No account was connected or requested, no fictional site was fetched, and no site file was edited by the evaluators.
+- During preparation, the provider case's partial-response metadata was corrected to record the socket error that explains the incomplete body. The evaluator was paused, then resumed with an instruction to reread that input, without a target conclusion. Its final report records the reread. The final input baseline and preserved repository fixture include this correction.
+- Report dates remain September 15; review finished after midnight on September 16 in Europe/Paris. The follow-up and provider reports contain 3,364 and 2,654 whitespace-separated words respectively; their additional findings and evidence layers warranted more detail than the healthy case.
+
+Temporary review artifacts are under `/var/folders/v3/1fc4mttx03z077whrlzzqml00000gn/T/raff-four-points-l6i_w5ag/`. They may disappear after cleanup; the protocol and fixtures remain in the repository. Paths below are relative to that temporary directory.
+
+| Output | SHA-256 |
+| --- | --- |
+| `healthy-no-accounts/.raff-seo-geo/reports/raff-seo-geo-mesure-test-2026-09-15.md` | `fddbff96cb0e75468cf31faf8a2d8e39fb7d14e34e4d1be13bdba5ddedbcd985` |
+| `follow-up/.raff-seo-geo/reports/raff-seo-geo-atlas-followup-test-2026-09-15.md` | `8efd21731034e04865dad040e23eb867eedeb91dd3d3d28004bbc234618e3c1e` |
+| `provider-intents/.raff-seo-geo/reports/raff-seo-geo-atelier-test-2026-09-15.md` | `67ecd5bb34f6db106e160ed9e5ae5e5dbb33e681a7bc3736ffd679261c026b6c` |
+
+### Helper validation and remaining limits
+
+- `node --test tests/collect-evidence.test.mjs tests/save-report.test.mjs`: **11/11 passed**, comprising seven collection tests and four report-saving tests. Collection tests use the real CLI against ephemeral loopback servers. The first sandboxed run could not bind those servers (`EPERM`); the authorized rerun succeeded.
+- Collection checks cover response headers and decompressed body bytes, hashes, redirects, HTTP errors, repeated/concurrent snapshots, exact body limits, truncated bodies, cross-origin stops, redirect loops and limits, unsupported redirect schemes, no retry on HTTP 429, transport failures, timeouts, and invalid inputs. These controlled tests do not establish access by actual search providers.
+- All six synthetic body sizes and hashes matched their manifests. Syntax checking, repository Markdown file-link checks, whitespace checks, and `git diff --check` passed.
+- Ruby YAML parsing and metadata checks passed for the main skill and both report templates. The cached skills CLI 1.5.26 discovered exactly one `raff-seo-geo` skill with `add . --list`; no installation was performed.
+- The skill-creator `quick_validate.py` remained unavailable because PyYAML is missing. The fallback checks above are not a claim that this validator passed; no dependency was added.
+
+These cases remain synthetic and finite. They do not establish live mobile rendering, real indexing/citations, traffic effects, or universal correctness of future audits. The Perplexity user-retrieval documentation discrepancy remains unresolved and is explicitly carried into guidance instead of converted into a recommendation.

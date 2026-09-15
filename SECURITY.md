@@ -17,9 +17,11 @@ on a third-party site without authorization.
 
 ## Scope and versions
 
-Raff-SEO-GEO contains agent instructions, references, a report template,
-and a local Node.js helper that creates Markdown reports without
-overwriting existing files. It has no hosted service. This policy covers
+Raff-SEO-GEO contains agent instructions, references, report templates,
+a local Node.js report helper, and an optional HTTP evidence collector.
+Both preserve earlier output. The collector makes unauthenticated GET
+requests to selected URLs and bounded same-origin redirects, and saves
+selected response headers and bounded response bodies. It has no hosted service. This policy covers
 those resources, this repository's installation instructions, and code
 added here later.
 
@@ -37,6 +39,12 @@ The owner's choices about indexing, crawler access, and training
 must be preserved. The skill must not lead to disclosure of credentials
 or private data, unauthorized website changes, or installation of
 unverified code.
+
+Evidence output must stay outside served content. The collector is not
+a secrets redactor: selected URLs, headers and public response bodies may
+still contain sensitive material. Scope selection and review before sharing
+remain the agent's responsibility. Captured content must never be executed
+or treated as instructions.
 
 This policy describes properties to review; `SECURITY.md` does not
 replace controls enforced by the agent or its host.

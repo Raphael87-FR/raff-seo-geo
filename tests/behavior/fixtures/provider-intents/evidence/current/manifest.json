@@ -1,0 +1,110 @@
+{
+  "evidence_format_version": 1,
+  "collector": "raff-seo-geo-http/1",
+  "node_version": "unknown (synthetic fixture)",
+  "evidence_layer": "http_capture",
+  "started_at": "2026-09-15T08:00:00.000Z",
+  "finished_at": "2026-09-15T08:00:03.000Z",
+  "request": {
+    "method": "GET",
+    "headers": {
+      "user-agent": "Raff-SEO-GEO-Evidence/1.0",
+      "accept": "*/*",
+      "accept-language": "fr-FR"
+    },
+    "credentials": "omit"
+  },
+  "limits": {
+    "timeout_ms_per_hop": 10000,
+    "max_body_bytes_per_hop": 2097152,
+    "max_redirects": 5,
+    "redirects": "same-origin only"
+  },
+  "body_representation": "fetch bytes after content-encoding decompression; no charset conversion",
+  "retained_response_headers": [
+    "content-type",
+    "x-robots-tag"
+  ],
+  "resources": [
+    {
+      "requested_url": "https://atelier.test/",
+      "hops": [
+        {
+          "id": "http-1-1",
+          "url": "https://atelier.test/",
+          "started_at": "2026-09-15T08:00:00.000Z",
+          "finished_at": "2026-09-15T08:00:00.050Z",
+          "elapsed_ms": 50,
+          "status": 200,
+          "headers": {
+            "content-type": "text/html; charset=utf-8"
+          },
+          "body": {
+            "path": "http-1-1.body",
+            "bytes": 547,
+            "sha256": "e2fda3faf7cc98fd4f478e9790872cf8f7e783f3c826b21142d1b30ee3f52a7a",
+            "complete": true,
+            "error": null
+          }
+        }
+      ],
+      "stop_reason": "response",
+      "complete_capture": true
+    },
+    {
+      "requested_url": "https://atelier.test/telecharger/",
+      "hops": [
+        {
+          "id": "http-2-1",
+          "url": "https://atelier.test/telecharger/",
+          "started_at": "2026-09-15T08:00:01.000Z",
+          "finished_at": "2026-09-15T08:00:01.050Z",
+          "elapsed_ms": 50,
+          "status": 200,
+          "headers": {
+            "content-type": "text/html; charset=utf-8",
+            "x-robots-tag": "noindex"
+          },
+          "body": {
+            "path": "http-2-1.body",
+            "bytes": 642,
+            "sha256": "cdfda7ada05371c19083accbabbb148bc4fdd73caecf6e6d4e3a66b59985f009",
+            "complete": true,
+            "error": null
+          }
+        }
+      ],
+      "stop_reason": "response",
+      "complete_capture": true
+    },
+    {
+      "requested_url": "https://atelier.test/robots.txt",
+      "hops": [
+        {
+          "id": "http-3-1",
+          "url": "https://atelier.test/robots.txt",
+          "started_at": "2026-09-15T08:00:02.000Z",
+          "finished_at": "2026-09-15T08:00:02.050Z",
+          "elapsed_ms": 50,
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "body": {
+            "path": "http-3-1.body",
+            "bytes": 23,
+            "sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95",
+            "complete": false,
+            "error": {
+              "name": "TypeError",
+              "code": "UND_ERR_SOCKET"
+            }
+          }
+        }
+      ],
+      "stop_reason": "response",
+      "complete_capture": false
+    }
+  ],
+  "complete_capture": false
+}

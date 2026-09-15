@@ -33,7 +33,7 @@ npx skills add . --list
 
 For each audit or diagnosis, the skill asks the agent to save a Markdown report in the audited project's workspace. Its preferred location is `.raff-seo-geo/reports/` at the project root, but only after confirming that the folder is outside published content; you can request another path or no file. The [no-overwrite helper](skills/raff-seo-geo/scripts/save-report.mjs) uses Node.js without third-party dependencies to create `raff-seo-geo-<site>-YYYY-MM-DD.md`, adding `-2`, `-3`, and so on for same-day repeats. It refuses to replace a user-specified exact filename that already exists. The helper does not decide whether a path is private or whether a recommendation was implemented. Existing reports must not be committed or published automatically.
 
-Reports use a [versioned Markdown template](skills/raff-seo-geo/assets/report-template.md) and the [reporting guide](skills/raff-seo-geo/references/reporting.md):
+Reports use a [compact](skills/raff-seo-geo/assets/compact-report-template.md) or [detailed](skills/raff-seo-geo/assets/report-template.md) versioned Markdown template and the [reporting guide](skills/raff-seo-geo/references/reporting.md). Both retain the same metadata, complete action coverage, evidence and history; choose presentation depth according to complexity. A healthy small site should not produce pages of repeated caveats.
 
 - **Complete action queue:** every detected, justified active action, sorted **P1 (blocking), P2 (important), P3 (conditional)**, with evidence and reasons. There is no top-three or other numerical cap. These are work priorities, not a GEO score or promised gain.
 - **Verified strengths:** practices positively observed in the current audit and worth preserving, with evidence layers and limits.
@@ -43,6 +43,12 @@ Reports use a [versioned Markdown template](skills/raff-seo-geo/assets/report-te
 - **Measurement:** available baselines, comparable periods, implementation checks, and outcome limits. Missing private data does not prevent a complete audit at the stated scope.
 
 A local fix is not proof of deployment, indexing, or AI visibility; supplied captures are not fresh live inspections. A healthy site may need no changes. An audit-only request may create a report but does not authorize changes to site code, content, or external settings. If no safe, writable location or exclusive-create mechanism is available, the agent provides the complete Markdown in its response and says that no file was saved.
+
+## Evidence, visitor needs, and provider coverage
+
+- **Reproducible observations:** the [collection guide](skills/raff-seo-geo/references/collection.md) covers local code, HTTP responses, rendered pages and supplied captures. The optional [HTTP collector](skills/raff-seo-geo/scripts/collect-evidence.mjs) uses Node.js 22+ without dependencies to save dated manifests, selected headers, response bodies and checksums outside served content. It records errors and partial captures, preserves old snapshots, and follows only bounded same-origin redirects. It does not render pages or score performance/indexing.
+- **Intent research:** the [need-to-page method](skills/raff-seo-geo/references/intent-research.md) connects actual or explicitly inferred visitor needs to existing coverage, gaps and justified actions. It works without keyword accounts, checks language/market, and avoids duplicate pages for phrasing variants.
+- **Perplexity and Claude:** a [conditional provider guide](skills/raff-seo-geo/references/perplexity-claude.md) complements Google, Bing and ChatGPT coverage. It distinguishes documented search, user-retrieval and training roles and exposes source discrepancies rather than inventing a rule or benefit.
 
 ## Keeping guidance reliable
 
@@ -68,6 +74,6 @@ Also try applicable integration scenarios on a safe test site:
 - A repeat audit with an unintended `noindex` on a key public page, a documented content improvement, and an optional enhancement: the action queue should distinguish P1, P2, and P3, combine old and new items, and leave resolved history out of the active queue.
 - An audit with a correctly served important page and one previously resolved finding: it should list current positive checks under Verified strengths with their evidence limits, and keep the earlier correction in follow-up history rather than treating it as a new issue.
 
-The report helper has dependency-free tests. Run `node --test tests/save-report.test.mjs` from the repository root to check repeat-run naming and refusal to replace an exact output path.
+Both helpers have dependency-free tests. Run `node --test tests/*.test.mjs` with Node.js 22+ from the repository root. Report tests check exclusive saving; collection tests use ephemeral loopback HTTP servers to verify real responses, redirects, partial captures, failures and preservation, without external accounts or production requests.
 
 The [behavioral evaluation record](tests/behavior/RESULTS.md) states what has actually been exercised and its limits. Finite fixtures and review criteria do not guarantee agent behavior on every site. A local installation can verify the package; a GitHub installation requires the repository to be accessible.

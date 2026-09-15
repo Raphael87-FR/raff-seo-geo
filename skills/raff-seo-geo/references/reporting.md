@@ -1,6 +1,6 @@
 # Raff-SEO-GEO report and follow-up guide
 
-Use this guide and the [report template](../assets/report-template.md) for any Markdown audit report. A prior recommendation is neither a new finding nor evidence that a fix was implemented. The report is a decision history, not just a list of defects.
+Use this guide and the [compact](../assets/compact-report-template.md) or [detailed](../assets/report-template.md) template for any Markdown audit report. A prior recommendation is neither a new finding nor evidence that a fix was implemented. The report is a decision history, not just a list of defects.
 
 ## Locate relevant history
 
@@ -43,18 +43,22 @@ Keep this section separate from resolved follow-ups: the latter explain whether 
 
 ## Report shape
 
-Use format version **1** in the template. Keep its stable metadata keys and section purposes; translate the prose/headings to the user's language and adapt detail to scope. Record the installed skill's version or source revision when known; otherwise use `unknown`. Do not mistake the audited site's Git revision for the installed skill's revision. Record the audited revision separately, and note local changes if relevant. Do not invent provenance.
+Use format version **1** in either template. The compact layout groups the same section purposes and keeps the same metadata; it is compatible with existing reports. Translate the prose/headings to the user's language. Record the installed skill's version or source revision when known; otherwise use `unknown`. Do not mistake the audited site's Git revision for the installed skill's revision. Record the audited revision separately, and note local changes if relevant. Do not invent provenance.
+
+Choose compact reporting for a straightforward audit, especially a healthy small site. A few paragraphs and a focused table may suffice; do not manufacture empty sections or repeat the same limitation under every heading. Choose detailed reporting when distinct findings, contradictory layers, risks, or history need fuller explanation. Site size alone does not decide complexity. This is a presentation choice, never a finding, action, or evidence limit.
+
+State each shared assumption, source claim, evidence item, and measurement limitation once, then cross-reference it. Keep all active IDs in the queue and every previous decision in history. In compact reports, a complete row or short paragraph may carry a finding's evidence, reasoning, confidence, effort/dependencies and verification; add detail only for information the row cannot convey. Group same-cause findings only with traceable scope and distinct actions. A healthy report should state its empty queue, observed strengths, need coverage and preservation conclusion without a long generic SEO tutorial.
 
 Include:
 
-- **Scope and summary:** goal, audience, engines, date, actual pages/templates and evidence layers, unexamined scope, earlier reports consulted or exact locations checked, and unavailable data. No private dashboard is required for a complete report at the stated scope.
+- **Scope and summary:** goal, audience, engines, date, actual pages/templates and evidence layers, unexamined scope, earlier reports consulted or exact locations checked, and unavailable data. Include the need-to-page map from the [intent method](intent-research.md), or link a larger one. No private dashboard is required for a complete report at the stated scope.
 - **Complete action queue:** priority, stable ID, origin, affected scope, short evidence, reason, and next action. Include every justified active action, with no numerical cap.
 - **Verified strengths:** positive observations and what to preserve, with evidence and limits. Keep resolved history distinct unless rechecked.
 - **Changes and decisions:** previous report link, per-layer implementation/problem state, recommendation state, owner decision and reason, regression/correction information, and any justified revisit condition. Account for prior IDs even when they have no active priority.
 - **Finding details:** for each actionable ID, supply the evidence chain from the decisions guide, goal contribution, classification, confidence and limits, effort/dependencies, proposed action, and implementation verification criterion. Distinguish follow-ups from genuinely new findings; link shared source records instead of duplicating them.
 - **Keep, simplify, or remove:** assess candidates, other uses, cost, loss risk, disposition, and prerequisites. Link active changes to their queue IDs; state when no removal is justified. A preservation decision need not become a task.
 - **Measurement and verification:** use available baselines, sources, periods, deployment dates, comparable follow-ups, confounders, and useful outcomes. Separate implementation success from outcome evidence. Keep engine-specific metrics distinct. Without private data, state which outcomes are unmeasured and use observable code/public-site criteria; do not block the audit or prescribe account connections by default.
-- **Checks and sources:** what actually ran, results and failures, data provenance/dates, primary-source URLs and precise supported claims with consultation dates, and remaining limits. If no finding was verified, state it explicitly.
+- **Checks and sources:** what actually ran, results and failures, data provenance/dates, primary-source URLs and precise supported claims with consultation dates, and remaining limits. Link preserved evidence using the [collection guide](collection.md), with snapshot + hop IDs or exact file/capture locators and completeness. If no finding was verified, state it explicitly.
 
 Before saving, reconcile all actionable details with the queue so no justified action is omitted. Ensure prior decisions and IDs are retained, template placeholders are replaced or marked unknown/not applicable, and every claimed verification corresponds to evidence actually inspected. The save helper validates none of these semantics.
 

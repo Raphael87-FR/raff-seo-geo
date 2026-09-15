@@ -17,8 +17,11 @@ A popular tactic or third-party tool can suggest a hypothesis, but it is not eno
 - [SKILL.md](skills/raff-seo-geo/SKILL.md): activation, shared method, and essential limits. Keep it concise and in English.
 - [Audit checklist](skills/raff-seo-geo/references/audit.md): detailed checks, sources, and options specific to an engine or site type.
 - [Evidence and decisions](skills/raff-seo-geo/references/decisions.md): reasoning from evidence, bounded experiments, preservation and removal criteria, and common unsupported claims.
+- [Evidence collection](skills/raff-seo-geo/references/collection.md): provenance, HTTP snapshots, completeness and repeat comparisons. Keep the [collector](skills/raff-seo-geo/scripts/collect-evidence.mjs) separate from SEO interpretation and scoring.
+- [Intent research](skills/raff-seo-geo/references/intent-research.md): visitor needs, existing coverage and justified opportunities without invented demand.
+- [Perplexity and Claude](skills/raff-seo-geo/references/perplexity-claude.md): current primary sources, distinct crawler roles and unresolved provider-documentation conflicts.
 - [Reporting guide](skills/raff-seo-geo/references/reporting.md): prior-audit reconciliation, finding IDs, and verification states.
-- [Report template](skills/raff-seo-geo/assets/report-template.md): stable report metadata and section purposes. Increment its format version with incompatible changes and explain how to read older reports; do not rewrite historical reports.
+- [Detailed](skills/raff-seo-geo/assets/report-template.md) and [compact](skills/raff-seo-geo/assets/compact-report-template.md) report templates: shared stable metadata and section purposes. Presentation may differ, completeness may not. Increment the format version with incompatible changes and explain how to read older reports; do not rewrite historical reports.
 - [Report helper](skills/raff-seo-geo/scripts/save-report.mjs): exclusive Markdown file creation; keep it dependency-free and test collision behavior.
 - [README.md](README.md): overview, installation through the existing `npx skills` CLI, and review scenarios. Do not create a custom installer without a demonstrated need.
 - [Behavioral evaluation](tests/behavior/README.md): synthetic inputs and observable decision criteria. Keep expected conclusions separate from the material given to the agent under test.
@@ -37,7 +40,7 @@ Also check `SKILL.md` against the [Agent Skills specification](https://agentskil
 
 When changing decision rules, run an applicable behavioral case in an isolated temporary workspace and inspect the report and side effects against its rubric. Preserve account-free completion, all justified actions without a numerical cap, decision history, and the distinction between observed and inferred outcomes. Record the actual results and limits in [the evaluation record](tests/behavior/RESULTS.md); do not substitute heading or keyword tests for behavioral evidence.
 
-If you change the report helper, run `node --test tests/save-report.test.mjs` and verify that repeat runs do not alter an earlier report.
+For helper changes, run `node --test tests/*.test.mjs` on Node.js 22+. Collection tests require loopback server binding and make no external requests. Preserve earlier artifacts, request provenance and partial/error states; do not turn raw HTTP timing, hashes or agent-name detection into SEO conclusions. The report helper's existing collision behavior must remain intact.
 
 In your proposal, state which checks you actually ran, their results, and their limits. A local installation does not prove agent behavior on every site, deployment, indexing, or an AI citation. Never include secrets or private data in examples or reports.
 

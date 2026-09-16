@@ -4,7 +4,7 @@ An agent skill for auditing and improving website visibility in traditional sear
 
 It helps decide what to preserve, improve, measure, simplify, or remove. The [evidence and decisions guide](skills/raff-seo-geo/references/decisions.md) distinguishes unsupported tactics from context-dependent uses: for example, lack of a Google Search benefit does not make a useful FAQ or another service's documentation index disposable.
 
-The audit works with the repository, accessible public pages, and previous reports. Search Console, Bing Webmaster Tools, analytics, and supplied exports are optional enrichment. Missing accounts do not block the report or trigger login/OAuth requests; conclusions that require unavailable data remain unverified.
+The audit works with the repository, accessible public pages, and previous reports; it does not use Search Console or Bing Webmaster Tools. Other analytics or supplied exports remain optional enrichment. Missing accounts do not block the report or trigger login/OAuth requests; conclusions that require unavailable data remain unverified.
 
 ## Installation
 

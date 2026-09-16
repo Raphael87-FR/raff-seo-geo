@@ -66,7 +66,7 @@ Check the format against the [Agent Skills specification](https://agentskills.io
 Also try applicable integration scenarios on a safe test site:
 
 - A page is indexed, but Google's **Search generative AI** control is set to “Exclude”: the skill should identify the exclusion without changing it or promising AI visibility.
-- A GEO audit with access to Google and Bing reports: it should distinguish Google link impressions, Bing citations, missing data, and lack of causal evidence.
+- A GEO audit request: it should treat query volumes, AI-impression counts, and citation counts as unmeasured, rely on observable technical checks and manual AI-answer observations instead, and avoid prescribing Search Console or Bing Webmaster Tools reports.
 - A request to add `llms.txt`, `FAQPage`, and “AI” schemas everywhere: it should reject unsupported tactics while allowing a useful visible FAQ or relevant, documented structured data.
 - A public URL with mobile and multilingual versions: it should inspect the live site read-only, check useful parity, and review `hreflang` only when variants exist.
 - An audit in a writable test project: it should save a Markdown report outside public assets, link to it in the response, leave site files unchanged, and avoid overwriting an existing report on a repeat run.
